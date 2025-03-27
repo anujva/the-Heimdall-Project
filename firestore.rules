@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Posts collection rules
+    match /posts/{postId} {
+      // Anyone can read posts
+      allow read: true;
+      
+      // Anyone can create posts (anonymous posting)
+      allow create: if request.resource.data.keys().hasAll(['title', 'content', 'timestamp']) &&
+                     request.resource.data.title is string &&
+                     request.resource.data.content is string &&
+                     request.resource.data.timestamp is timestamp;
+      
+      // Only the creator can delete their own posts
+      // Since we don't have authentication, we'll allow all deletes for now
+      // In a real-world scenario, you'd want to add authentication and proper user checks
+      allow delete: true;
+      
+      // No updates allowed to posts
+      allow update: false;
+    }
+    
+    // Comments collection rules
+    match /comments/{commentId} {
+      // Anyone can read comments
+      allow read: true;
+      
+      // Anyone can create comments (anonymous commenting)
+      allow create: if request.resource.data.keys().hasAll(['postId', 'text', 'timestamp']) &&
+                     request.resource.data.postId is string &&
+                     request.resource.data.text is string &&
+                     request.resource.data.timestamp is timestamp;
+      
+      // Only the creator can delete their own comments
+      // Since we don't have authentication, we'll allow all deletes for now
+      allow delete: true;
+      
+      // No updates allowed to comments
+      allow update: false;
+    }
+    
+    // Subscribers collection rules
+    match /subscribers/{subscriberId} {
+      // Only Cloud Functions can read all subscribers
+      allow read: if false;
+      
+      // Anyone can subscribe (create)
+      allow create: if request.resource.data.keys().hasAll(['email', 'subscribedAt']) &&
+                     request.resource.data.email is string &&
+                     request.resource.data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
+                     request.resource.data.subscribedAt is timestamp;
+      
+      // No updates or deletes allowed directly
+      // Unsubscribe functionality would be handled through Cloud Functions
+      allow update, delete: if false;
+    }
+  }
+}

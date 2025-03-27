@@ -4,6 +4,7 @@
     <title>The Heimdall Project</title> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Heimdall Project - An anonymous forum platform to connect beyond usernames and recognition">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,36 +19,33 @@
             background-size: contain;
         }
         .nav-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #333;
-    padding: 10px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
 
-.nav-bar a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    display: inline-block;
-    font-size: 16px;
-    transition: background 0.3s, color 0.3s;
-}
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: inline-block;
+            font-size: 16px;
+            transition: background 0.3s, color 0.3s;
+        }
 
-.nav-bar a:hover {
-    background: #555;
-    border-radius: 5px;
-}
-
-.container {
-    margin-top: 60px; /* Prevents content from being hidden behind fixed nav */
-}
+        .nav-bar a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
 
         .container {
+            margin-top: 60px; /* Prevents content from being hidden behind fixed nav */
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -57,10 +55,35 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .feature-list {
+            text-align: left;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-
     <div class="nav-bar">
         <a href="index.html">Home</a>
         <a href="pagetwo.html">Forum</a>
@@ -72,6 +95,37 @@
         <h1>Welcome to The Heimdall Project</h1> 
         <hr>
         <p>Serves as a forum to connect beyond usernames and recognition. All anonymous postings and replies. Simply for finding comfort.</p>
+        
+        <div class="feature-list">
+            <h2>Key Features:</h2>
+            <ul>
+                <li><strong>Anonymous Forum:</strong> Share your thoughts without revealing your identity</li>
+                <li><strong>Comment System:</strong> Engage in discussions through anonymous comments</li>
+                <li><strong>Notification System:</strong> Subscribe to receive email alerts for new posts</li>
+                <li><strong>Persistent Storage:</strong> Posts and comments are stored securely in the cloud</li>
+            </ul>
+        </div>
+        
+        <a href="pagetwo.html" class="cta-button">Visit the Forum</a>
     </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase app
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "your-project-id.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project-id.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
 </body>
 </html>

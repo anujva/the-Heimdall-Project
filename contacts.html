@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
-    <title>The Heimdall Project</title> 
+    <title>The Heimdall Project - Contact</title> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact information for The Heimdall Project">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,36 +19,33 @@
             background-size: contain;
         }
         .nav-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #333;
-    padding: 10px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
 
-.nav-bar a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    display: inline-block;
-    font-size: 16px;
-    transition: background 0.3s, color 0.3s;
-}
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: inline-block;
+            font-size: 16px;
+            transition: background 0.3s, color 0.3s;
+        }
 
-.nav-bar a:hover {
-    background: #555;
-    border-radius: 5px;
-}
-
-.container {
-    margin-top: 60px; /* Prevents content from being hidden behind fixed nav */
-}
+        .nav-bar a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
 
         .container {
+            margin-top: 60px; /* Prevents content from being hidden behind fixed nav */
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -57,13 +55,35 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
+        
         .resized-image {
-    width: 60px; 
-    height: 70px; }
+            width: 60px; 
+            height: 70px;
+        }
+        
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .social-link:hover {
+            opacity: 0.8;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            width: 80%;
+        }
     </style>
 </head>
 <body>
-
     <div class="nav-bar">
         <a href="index.html">Home</a>
         <a href="pagetwo.html">Forum</a>
@@ -74,9 +94,37 @@
         <hr>
         <h1>Ways To Contact</h1> 
         <hr>
-        <p>Currently available exclusively on Instagram under a single profile and nowhere else. Any other is not us. 
-        <a href=""><img src="insta.jpeg" class="resized-image"><br>@the-HeimdallProject</a>    
-        </p>
+        <p>Currently available exclusively on Instagram under a single profile and nowhere else. Any other is not us.</p>
+        
+        <a href="" class="social-link">
+            <img src="insta.jpeg" class="resized-image">
+            <span>@the-HeimdallProject</span>
+        </a>
+        
+        <div class="contact-info">
+            <h2>About The Heimdall Project</h2>
+            <p>The Heimdall Project serves as an anonymous forum platform designed to connect people beyond usernames and recognition. It provides a space for users to share thoughts and find comfort through anonymous postings and replies.</p>
+            <p>We value your privacy and aim to create a safe space for open expression.</p>
+        </div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase app
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "your-project-id.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project-id.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
 </body>
 </html>
